@@ -9,13 +9,13 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static int size = 25;
+    public static int size = 100;
 
     public static double[] x = new double[size];
     public static double[] y = new double[size];
 
     static double indentation = 2.5;
-    static double step = 0.0001;
+    static double step = 0.1;
 
     public static void main(String[] args) {
 
@@ -24,7 +24,7 @@ public class Main {
         for (int i = 0; i < size; i++) {
             x[i] = i * step + indentation;
             y[i] = Math.sin(x[i]);
-            y[i] = x[i] * x[i];
+//            y[i] = x[i] * x[i] * x[i];
 
 //            System.out.println(x[i] + " " + y[i]);
         }

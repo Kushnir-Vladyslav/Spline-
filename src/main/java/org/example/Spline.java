@@ -29,16 +29,8 @@ public class Spline extends RecursiveAction {
         dx[1] = dx[0] * dx[0];
         dx[2] = dx[1] * dx[0];
 
-        results[0].c = (y[3] + 4 * y[2] - 5 * y[1] + y[0]) ;
-        System.out.println(results[0].c + " " + -Math.sin(x[0]));
-        System.out.println(y[3] + " " + y[2] + " " + y[1] + " " + y[0]);
-        System.out.println(y[3] + " " + 4 * y[2] + " " + 5 * y[1] + " " + y[0]);
-        System.out.println(y[1] - y[0] );
-        results[0].c = 0;
-        double rightBoundary = (2 * y[x.length - 1] - 5 * y[x.length - 2] + 4 * y[x.length - 3] - 3 * y[x.length - 4]) ;
-        System.out.println(rightBoundary + " " + - Math.sin(x[x.length - 1]));
-        System.out.println(dx[1]);
-        rightBoundary = 0;
+        results[0].c = (2 * y[3] - 5 * y[2] + 4 * y[1] - y[0]) / (dx[1] * 2);
+        double rightBoundary = (2 * y[x.length - 1] - 5 * y[x.length - 2] + 4 * y[x.length - 3] - y[x.length - 4]) / dx[1] ;
 
         gauses = new Gause[(x.length - 1) * 3 - 1];
 

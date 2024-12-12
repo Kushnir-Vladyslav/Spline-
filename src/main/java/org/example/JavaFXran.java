@@ -132,7 +132,7 @@ public class JavaFXran extends Application {
 
         for (int i = 0; i < x.length; i++ ) {
             y[i] = - Math.sin(x[i]);
-            y[i] = 2;
+//            y[i] = 2 * x[i];
         }
 
         for (int i = 0; i < x.length; i++ ) {
