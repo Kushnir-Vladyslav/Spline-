@@ -9,19 +9,22 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static int size = 1000;
+    public static int size = 25;
 
-    public static float[] x = new float[size];
-    public static float[] y = new float[size];
+    public static double[] x = new double[size];
+    public static double[] y = new double[size];
 
+    static double indentation = 2.5;
+    static double step = 0.0001;
 
     public static void main(String[] args) {
 
         Instant startI = Instant.now();
 
         for (int i = 0; i < size; i++) {
-            x[i] = i;
-            y[i] = (float) Math.sin((double) i);
+            x[i] = i * step + indentation;
+            y[i] = Math.sin(x[i]);
+            y[i] = x[i] * x[i];
 
 //            System.out.println(x[i] + " " + y[i]);
         }

@@ -115,11 +115,11 @@ public class JavaFXran extends Application {
         animationTimer.start();
     }
 
-    float minX;
-    float maxX;
+    double minX;
+    double maxX;
 
-    float minY;
-    float maxY;
+    double minY;
+    double maxY;
 
     public void draw () {
         fillBackground(0xFFFFFFFF);
@@ -129,6 +129,11 @@ public class JavaFXran extends Application {
 
         minY = y[0];
         maxY = y[0];
+
+        for (int i = 0; i < x.length; i++ ) {
+            y[i] = - Math.sin(x[i]);
+            y[i] = 2;
+        }
 
         for (int i = 0; i < x.length; i++ ) {
             if (minX > x[i]) minX = x[i];
@@ -163,29 +168,29 @@ public class JavaFXran extends Application {
     }
 
     public void spline () {
-        float step = (x[1] - x[0]) / 100;
+        double step = (x[1] - x[0]) / 100;
 
         for (int i = 0; i < x.length - 1; i++) {
-            for (float j = x[i]; j < x[i + 1]; j += step) {
-                float newY = result[i].getY(x[i], j);
+            for (double j = x[i]; j < x[i + 1]; j += step) {
+                double newY = result[i].getYsd(x[i], j);
 
                 if (minY > newY) minY = newY;
                 if (maxY < newY) maxY = newY;
             }
         }
 
-        float dx = (maxX - minX) * 0.1f;
+        double dx = (maxX - minX) * 0.1f;
         minX -= dx;
         maxX += dx;
 
-        float dy = (maxY - minY) * 0.1f;
+        double dy = (maxY - minY) * 0.1f;
         minY -= dy;
         maxY += dy;
 
         for (int i = 0; i < x.length - 1; i++) {
-            for (float j = x[i]; j < x[i + 1]; j += step) {
+            for (double j = x[i]; j < x[i + 1]; j += step) {
                 int X = (int) ((j - minX) / (maxX - minX) * ScreenWidth);
-                int Y = (int) ((result[i].getY(x[i], j) - minY) / (maxY - minY) * ScreenWidth);
+                int Y = (int) ((result[i].getYsd(x[i], j) - minY) / (maxY - minY) * ScreenWidth);
 
 
                 Pixels[X + Y * ScreenWidth] = 0xFF000000;
